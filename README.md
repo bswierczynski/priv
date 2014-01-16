@@ -1,7 +1,7 @@
 Priv
 ====
 
-Use WeakMaps to safely store private data while using prototypal inheritance.
+Safely store private data with WeakMaps while using prototypal inheritance.
 
 
 Usage
@@ -19,6 +19,7 @@ Usage
 		};
 
 		global.Box = Box;
+
 	})(this, Priv());
 
 	// Using your 'class':
@@ -45,8 +46,8 @@ Source
 Why it works?
 -------------
 
-Your 'class' has its own instance of Priv, safely encapsulated with a closure,
-so other classes have no access to it.
+Your 'class' has its own instance of Priv. It's safely encapsulated by a closure,
+so other code has no access to it.
 
-Private variables are stored separately for each instance,  in maps that use the instance
-as the key.
+For each instance of your 'class', an entry is stored in an encapsulated WeakMap.
+This entry holds the object containing all private data for this particular instance.
